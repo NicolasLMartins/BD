@@ -1,5 +1,7 @@
 CREATE DATABASE Biblioteca;
 
+USE Biblioteca;
+
 CREATE TABLE Biblioteca(
     Codigo int NOT NULL,
     Descricao VARCHAR(50),

@@ -1,0 +1,60 @@
+CREATE DATABASE Excursao;
+
+USE Excursao;
+
+CREATE TABLE Excursao(
+    ID int NOT NULL,
+    Nome VARCHAR(50),
+    NumDias int,
+    PRIMARY KEY(ID)
+);
+
+CREATE TABLE Cliente(
+    CPF int NOT NULL,
+    Nome VARCHAR(50),
+    PRIMARY KEY(CPF)
+);
+
+CREATE TABLE Inscricao(
+    C_CPF int NOT NULL,
+    E_ID int NOT NULL,
+    Data DATE,
+    PRIMARY KEY(C_CPF, E_ID),
+    FOREIGN KEY(C_CPF)
+        REFERENCES Cliente(CPF),
+    FOREIGN KEY(E_ID)
+        REFERENCES Excursao(ID)
+);
+
+CREATE TABLE Cidade(
+    Codigo int NOT NULL,
+    Nome VARCHAR(50),
+    PRIMARY KEY(Codigo)
+);
+CREATE TABLE Parada(
+    DataSaida DATE NOT NULL,
+    DataChegada DATE,
+    Ci_Codigo int NOT NULL,
+    E_ID int NOT NULL,
+    PRIMARY KEY(DataSaida),
+    FOREIGN KEY(Ci_Codigo)
+        REFERENCES Cidade(Codigo),
+    FOREIGN KEY(E_ID)
+        REFERENCES Excursao(ID)
+);
+
+CREATE TABLE Guia(
+    Matricula int NOT NULL,
+    Nome VARCHAR(50),
+    PRIMARY KEY(Matricula)
+);
+
+CREATE TABLE Orienta(
+    G_Matricula int NOT NULL,
+    E_ID int NOT NULL,
+    PRIMARY KEY(G_Matricula, E_ID),
+    FOREIGN KEY(G_Matricula)
+        REFERENCES Guia(Matricula),
+    FOREIGN KEY(E_ID)
+        REFERENCES Excursao(ID)
+);

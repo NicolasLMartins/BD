@@ -1,0 +1,44 @@
+CREATE DATABASE Cinema;
+
+USE Cinema;
+
+CREATE TABLE Ator(
+    CPF int NOT NULL,
+    Nome VARCHAR(50),
+    PRIMARY KEY(CPF)
+);
+
+CREATE TABLE Filme(
+    ID int NOT NULL,
+    Titulo VARCHAR(50),
+    PRIMARY KEY(ID)
+);
+
+CREATE TABLE Premio(
+    Codigo int NOT NULL,
+    Descricao VARCHAR(50),
+    PRIMARY KEY(Codigo)
+);
+
+CREATE TABLE Participacao(
+    A_CPF int NOT NULL,
+    F_ID int NOT NULL,
+    PRIMARY KEY(A_CPF, F_ID),
+    FOREIGN KEY(A_CPF)
+        REFERENCES Ator(CPF),
+    FOREIGN KEY(F_ID)
+        REFERENCES Filme(ID)
+);
+
+ALTER TABLE Participacao ADD COLUMN Papel VARCHAR(50);
+
+CREATE TABLE Premiacao(
+    F_ID int NOT NULL,
+    P_COD int NOT NULL,
+    Ano DATE,
+    PRIMARY KEY(F_ID, P_COD),
+    FOREIGN KEY(F_ID)
+        REFERENCES Filme(ID),
+    FOREIGN KEY(P_COD)
+        REFERENCES Premio(Codigo)
+);
