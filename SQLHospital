@@ -2,15 +2,15 @@ CREATE DATABASE Hospital;
 
 USE Hospital;
 
-CREATE TABLE Hospital(
-    CNPJ int NOT NULL,
-    Nome VARCHAR(50),
-    Endereco VARCHAR(50),
-    Med_CRM int NOT NULL,
-    PRIMARY KEY(CNPJ),
-    FOREIGN KEY(Med_CRM)
-        REFERENCES Medico(CRM)
+CREATE TABLE Medico(
+    CRM int NOT NULL,
+    Especialidade VARCHAR(50),
+    DataFormado DATE,
+    PRIMARY KEY(CRM)
 );
+
+ALTER TABLE Medico ADD COLUMN CH_Matricula int NOT NULL;
+ALTER TABLE Medico ADD FOREIGN KEY(CH_Matricula) REFERENCES CorpoHospitalar(Matricula);
 CREATE TABLE CorpoHospitalar(
     Matricula int NOT NULL,
     Nome VARCHAR(50),
@@ -24,6 +24,15 @@ CREATE TABLE CorpoHospitalar(
     FOREIGN KEY(Hos_CNPJ)
         REFERENCES Hospital(CNPJ)
 );
+CREATE TABLE Hospital(
+    CNPJ int NOT NULL,
+    Nome VARCHAR(50),
+    Endereco VARCHAR(50),
+    Med_CRM int NOT NULL,
+    PRIMARY KEY(CNPJ),
+    FOREIGN KEY(Med_CRM)
+        REFERENCES Medico(CRM)
+);
 CREATE TABLE Enfermeiro(
     CRE int NOT NULL,
     Categoria VARCHAR(50),
@@ -34,18 +43,46 @@ CREATE TABLE Enfermeiro(
         REFERENCES CorpoHospitalar(Matricula)
 );
 CREATE TABLE CorpoAdministrativo(
+    CH_Matricula int NOT NULL,
     Categoria VARCHAR(50),
     Nivel int,
-    CH_Matricula int NOT NULL,
     PRIMARY KEY(CH_Matricula),
     FOREIGN KEY(CH_Matricula)
         REFERENCES CorpoHospitalar(Matricula)
 );
-CREATE TABLE Medico(
-    Especialidade VARCHAR(50),
-    CRM int NOT NULL,
-    DataFormado DATE,
-    PRIMARY KEY(CRM)
+CREATE TABLE Exame(
+    Numero int NOT NULL,
+    Nome VARCHAR(50),
+    Descricao VARCHAR(50),
+    Requisitos VARCHAR(50),
+    PRIMARY KEY(Numero)
+);
+CREATE TABLE Paciente(
+    NumProntuario int NOT NULL,
+    Nome VARCHAR(50),
+    Endereco VARCHAR(50),
+    Identidade int UNIQUE,
+    FichaMedica VARCHAR(100),
+    Hos_CNPJ int NOT NULL,
+    PRIMARY KEY(NumProntuario),
+    FOREIGN KEY(Hos_CNPJ)
+        REFERENCES Hospital(CNPJ)
+);
+CREATE TABLE Externo(
+    Pac_NumProntuario int NOT NULL,
+    PRIMARY KEY(Pac_NumProntuario),
+    FOREIGN KEY(Pac_NumProntuario)
+        REFERENCES Paciente(NumProntuario)
+);
+CREATE TABLE Interno(
+    Pac_NumProntuario int NOT NULL,
+    Tratamento VARCHAR(100),
+    Diagnostico VARCHAR(100),
+    DataSaida DATE,
+    DataEntrada DATE,
+    PRIMARY KEY(Pac_NumProntuario),
+    FOREIGN KEY(Pac_NumProntuario)
+        REFERENCES Paciente(NumProntuario)
 );
 CREATE TABLE Consulta(
     Data DATE NOT NULL,
@@ -68,13 +105,6 @@ CREATE TABLE Requisita(
         REFERENCES Consulta(Data),
     FOREIGN KEY(Exa_Numero)
         REFERENCES Exame(Numero)
-);
-CREATE TABLE Exame(
-    Numero int NOT NULL,
-    Nome VARCHAR(50),
-    Descricao VARCHAR(50),
-    Requisitos VARCHAR(50),
-    PRIMARY KEY(Numero)
 );
 CREATE TABLE Clinico(
     Med_CRM int NOT NULL,
@@ -110,32 +140,4 @@ CREATE TABLE Cirurgia(
     Descricao VARCHAR(50),
     CuidadosPosOperatorios VARCHAR(50),
     PRIMARY KEY(Num)
-);
-
-CREATE TABLE Paciente(
-    NumProntuario int NOT NULL,
-    Nome VARCHAR(50),
-    Endereco VARCHAR(50),
-    Identidade int UNIQUE,
-    FichaMedica VARCHAR(100),
-    Hos_CNPJ int NOT NULL,
-    PRIMARY KEY(NumProntuario),
-    FOREIGN KEY(Hos_CNPJ)
-        REFERENCES Hospital(CNPJ)
-);
-CREATE TABLE Externo(
-    Pac_NumProntuario int NOT NULL,
-    PRIMARY KEY(Pac_NumProntuario),
-    FOREIGN KEY(Pac_NumProntuario)
-        REFERENCES Paciente(NumProntuario)
-);
-CREATE TABLE Interno(
-    Pac_NumProntuario int NOT NULL,
-    Tratamento VARCHAR(100),
-    Diagnostico VARCHAR(100),
-    DataSaida DATE,
-    DataEntrada DATE,
-    PRIMARY KEY(Pac_NumProntuario),
-    FOREIGN KEY(Pac_NumProntuario)
-        REFERENCES Paciente(NumProntuario)
 );
