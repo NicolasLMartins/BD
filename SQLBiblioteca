@@ -1,12 +1,12 @@
 CREATE DATABASE Biblioteca;
-
 USE Biblioteca;
-
 CREATE TABLE Biblioteca(
     Codigo int NOT NULL,
     Descricao VARCHAR(50),
     Endereco VARCHAR(50)
 );
+
+ALTER TABLE Biblioteca CHANGE Endereco Endereco VARCHAR(100);
 
 ALTER TABLE `biblioteca` ADD PRIMARY KEY(Codigo);
 
@@ -16,7 +16,6 @@ CREATE TABLE Associado(
     Sexo VARCHAR(1),
     PRIMARY KEY(Matricula)
 );
-
 CREATE TABLE Cadastra(
     B_Codigo int NOT NULL,
     Ad_Matricula int NOT NULL,
@@ -26,7 +25,6 @@ CREATE TABLE Cadastra(
     FOREIGN KEY(Ad_Matricula)
         REFERENCES Associado(Matricula)
 );
-
 CREATE TABLE Livro(
     ISBN int NOT NULL,
     Titulo VARCHAR(50),
@@ -38,13 +36,11 @@ CREATE TABLE Livro(
     FOREIGN KEY(Ad_Matricula)
         REFERENCES Associado(Matricula)
 );
-
 CREATE TABLE Assunto(
     Codigo int NOT NULL,
     Descricao VARCHAR(50),
     PRIMARY KEY(Codigo)
 );
-
 CREATE TABLE Aborda(
     As_Codigo int NOT NULL,
     L_ISBN int NOT NULL,
@@ -54,13 +50,11 @@ CREATE TABLE Aborda(
     FOREIGN KEY (L_ISBN)
         REFERENCES Livro(ISBN)
 );
-
 CREATE TABLE Autor(
     Codigo int NOT NULL,
     Nome VARCHAR(50),
     PRIMARY KEY(Codigo)
 );
-
 CREATE TABLE Escreve(
     Au_Codigo int NOT NULL,
     L_ISBN int NOT NULL,
@@ -70,3 +64,4 @@ CREATE TABLE Escreve(
     FOREIGN KEY(L_ISBN)
         REFERENCES Livro(ISBN)
 );
+
