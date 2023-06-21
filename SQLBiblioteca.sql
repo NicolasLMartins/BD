@@ -1,3 +1,4 @@
+-- Active: 1687368827307@@localhost@3306@biblioteca
 CREATE DATABASE Biblioteca;
 USE Biblioteca;
 CREATE TABLE Biblioteca(

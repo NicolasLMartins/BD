@@ -1,3 +1,4 @@
+-- Active: 1687368827307@@localhost@3306@cinema
 CREATE DATABASE cinema;
 DROP DATABASE cinema;
 USE cinema;
