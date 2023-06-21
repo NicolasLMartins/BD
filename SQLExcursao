@@ -58,3 +58,18 @@ CREATE TABLE Orienta(
     FOREIGN KEY(E_ID)
         REFERENCES Excursao(ID)
 );
+
+INSERT INTO cidade(Codigo, Nome)
+VALUES(12345, "Pirapora");
+INSERT INTO cliente(CPF, Nome)
+VALUES(123456789, "Eduardo");
+INSERT INTO excursao(ID, Nome, NumDias)
+VALUES(54321, "Volta ao Mundo", 80);
+INSERT INTO guia(Matricula, Nome)
+VALUES(987654321, "Carlos");
+INSERT INTO inscricao(C_CPF, E_ID, Data)
+VALUES(123456789, 54321, "2020-06-06");
+INSERT INTO orienta(G_Matricula, E_ID)
+VALUES(987654321, 54321);
+INSERT INTO parada(DataSaida, DataChegada, Ci_Codigo, E_ID)
+VALUES("2020-10-31", "2020-12-12", 12345, 54321);

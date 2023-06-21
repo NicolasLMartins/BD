@@ -65,3 +65,20 @@ CREATE TABLE Escreve(
         REFERENCES Livro(ISBN)
 );
 
+INSERT INTO associado(Matricula, Nome, Sexo)
+VALUES(123, "Eduardo", "M");
+INSERT INTO assunto(Codigo, Descricao)
+VALUES(1234, "Fantasia");
+INSERT INTO biblioteca(Codigo, Descricao, Endereco)
+VALUES(4321, "Biblioteca Municipal", "Rua Acapulco");
+INSERT INTO cadastra(B_Codigo, Ad_Matricula)
+VALUES(4321, 123);
+INSERT INTO autor(Codigo, Nome)
+VALUES(9876, "Disney");
+INSERT INTO livro(ISBN, Titulo, B_Codigo, Ad_Matricula)
+VALUES(12345, "A Bela Adormecida", 4321, 123);
+INSERT INTO aborda(As_Codigo, L_ISBN)
+VALUES(1234, 12345);
+INSERT INTO escreve(Au_Codigo, L_ISBN)
+VALUES(9876, 12345);
+SELECT * FROM aborda, associado, assunto, autor, biblioteca, cadastra, escreve, livro;

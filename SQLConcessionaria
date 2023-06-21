@@ -1,3 +1,4 @@
+-- Active: 1687368827307@@localhost@3306@concessionaria
 CREATE DATABASE Concessionaria;
 
 USE Concessionaria;
@@ -67,3 +68,21 @@ CREATE TABLE Mantem(
     FOREIGN KEY(Ca_Chassi)
         REFERENCES Carro(Chassi)
 );
+
+INSERT INTO acessorio(Codigo, Descricao)
+VALUES(123, "Porta Copo");
+INSERT INTO concessionaria(CNPJ, RazaoSocial, Endereco)
+VALUES(4321, "Ford", "Rua Acapulco");
+INSERT INTO cliente(CPF, Nome, Sexo)
+VALUES(123456789, "Eduardo", "M");
+INSERT INTO carro(Chassi, Modelo, Ano, Fabricante, Preco, Co_CNPJ, Cl_CPF)
+VALUES (123456, "Ka", "2020-06-6", "Ford", 12345.67, 4321, 123456789);
+INSERT INTO cadastra(Co_CNPJ, Cl_CPF)
+VALUES(4321, 123456789);
+INSERT INTO oficina(CNPJ, Nome)
+VALUES(5678, "Borraxaria");
+INSERT INTO mantem(Of_CNPJ, Ca_Chassi)
+VALUES(5678, 123456);
+INSERT INTO possui(Ac_Codigo, Ca_Chassi)
+VALUES(123, 123456);
+SELECT * FROM acessorio, carro, cadastra, cliente, concessionaria, mantem, oficina, possui;
