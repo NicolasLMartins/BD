@@ -178,3 +178,71 @@ SELECT nome FROM funcionarios WHERE sexo = "f"
 AND cidade = "Porto Alegre" AND bairro != "Sarandi";
 SELECT * FROM funcionarios WHERE salario IS NULL;
 SELECT * FROM funcionarios WHERE salario IS NOT NULL;
+SELECT nome, sexo, setor, cargo, salario FROM funcionarios WHERE salario > 1500;
+SELECT nome, sexo, data_nasc FROM funcionarios WHERE data_nasc > 19940120;
+SELECT nome, sexo, data_nasc FROM funcionarios WHERE data_nasc > "1994-01-20";
+UPDATE funcionarios SET cidade='Porto Alegre' WHERE `Id`=8;
+SELECT nome, data_nasc AS "Data de nascimento", setor FROM funcionarios WHERE cidade != "Porto Alegre";
+SELECT Funci.nome, Funci.sobrenome FROM funcionarios AS Funci;
+SELECT CONCAT(nome, ' ', sobrenome) AS "Nome completo", sexo, salario AS "Salário bruto", setor, cargo FROM funcionarios WHERE salario >= 1000 AND salario <= 2000;
+SELECT * FROM funcionarios ORDER BY nome;
+SELECT * FROM funcionarios ORDER BY nome DESC;
+SELECT CONCAT(nome, ' ', sobrenome) AS "Nome completo", setor, cargo FROM funcionarios ORDER BY setor, cargo;
+SELECT CONCAT(nome, ' ', sobrenome) AS "Nome completo", setor, cargo FROM funcionarios ORDER BY setor DESC, cargo;
+SELECT CONCAT(nome, ' ', sobrenome) AS "Nome completo", setor, cargo FROM funcionarios ORDER BY 2 DESC, 3;
+SELECT * FROM funcionarios LIMIT 5;
+SELECT nome, salario FROM funcionarios ORDER BY salario DESC;
+SELECT nome, salario FROM funcionarios ORDER BY salario DESC LIMIT 3;
+SELECT nome, salario FROM funcionarios WHERE salario IS NOT NULL ORDER BY salario LIMIT 4;
+DELETE FROM funcionarios WHERE id > 10;
+SELECT nome, setor, cargo, salario FROM funcionarios WHERE salario >= 1200 AND salario <= 2000 ORDER BY nome;
+ALTER TABLE funcionarios AUTO_INCREMENT = 10;
+SELECT nome, setor, cargo, salario FROM funcionarios WHERE salario BETWEEN 1200 AND 2000 ORDER BY nome;
+SELECT  nome, sexo, data_nasc AS "Data de nascimento" FROM funcionarios
+WHERE data_nasc BETWEEN 19920430 AND 19991030 ORDER BY data_nasc DESC;
+SELECT nome FROM funcionarios WHERE nome BETWEEN 'A' AND 'H' ORDER BY nome;
+SELECT DISTINCT setor FROM funcionarios;
+SELECT DISTINCT cargo FROM funcionarios ORDER BY cargo;
+SELECT DISTINCT cargo, nome FROM funcionarios ORDER BY cargo;
+SELECT DISTINCT cargo, setor FROM funcionarios ORDER BY cargo;
+SELECT COUNT(*) FROM funcionarios;
+SELECT COUNT(*) AS "Registros" FROM funcionarios;
+SELECT COUNT(*) AS "Mulheres" FROM funcionarios WHERE sexo = "f";
+SELECT COUNT(*) AS "Aniversários" FROM funcionarios
+WHERE data_nasc BETWEEN 19940430 AND 19991030;
+SELECT COUNT(*) AS "Salários" FROM funcionarios WHERE salario > 1500;
+SELECT setor, COUNT(*) AS "Pessoas por setor"
+FROM funcionariosGROUP BY setor;
+SELECT cargo, COUNT(*) AS "Pessoas" FROM funcionarios GROUP BY cargo ORDER BY Pessoas DESC;
+SELECT setor, SUM(salario) AS "Total salários"
+FROM funcionarios GROUP BY setor;
+SELECT setor, ROUND(SUM(salario), 2)
+AS "Total salários" FROM funcionarios GROUP BY setor;
+SELECT setor, cargo, COUNT(*) AS "Pessoas"
+FROM funcionarios GROUP BY setor, cargo ORDER BY setor;
+SELECT setor, cargo, COUNT(*) AS "Pessoas por cargo"
+FROM funcionarios GROUP BY setor, cargo ORDER BY setor DESC, cargo;
+SELECT setor, MIN(salario)
+AS "Menor salário" FROM funcionarios GROUP BY setor;
+SELECT setor, MIN(salario) AS "Menor salário" FROM funcionarios GROUP BY setor;
+SELECT setor, ROUND(MIN(salario), 2) AS "Menor salário"
+FROM funcionarios GROUP BY setor;
+SELECT cargo, MAX(salariO) AS "Maior salário" FROM funcionarios GROUP BY cargo;
+SELECT cargo, ROUND(MAX(salario), 2) AS "Maior salário"
+FROM funcionarios WHERE salario IS NOT NULL GROUP BY cargo;
+SELECT cargo, ROUND(SUM(salario), 2) AS "Maior salário"
+FROM funcionarios GROUP BY cargo ORDER BY 2 DESC;
+SELECT cargo, FORMAT(SUM(salario), 2) AS "Maior salário"
+FROM funcionarios GROUP BY cargo ORDER BY 2 DESC;
+SELECT setor, AVG(salario) AS "Média"
+FROM funcionarios GROUP BY setor;
+SELECT setor, ROUND(AVG(salario), 2) AS "Média"
+FROM funcionarios GROUP BY setor ORDER BY 2 DESC;
+SELECT setor FROM funcionarios GROUP BY setor HAVING (COUNT(setor) = 2);
+SELECT setor, COUNT(setor) AS "Pessoas"
+FROM funcionarios GROUP BY setor HAVING (Pessoas = 2);
+SELECT cargo, ROUND(SUM(salario), 2) AS "Soma"
+FROM funcionarios GROUP BY cargo HAVING (Soma > 1500 AND Soma < 3000);
+SELECT sexo, cargo, ROUND(SUM(salariO), 2) AS "Soma"
+FROM funcionarios WHERE sexo = "f" GROUP BY cargo
+HAVING (Soma > 1000 AND Soma < 3000);
