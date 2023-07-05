@@ -1,0 +1,21 @@
+-- Active: 1687368827307@@localhost@3306@empresa
+-- CREATE TABLE estoque(
+--     Id INT,
+--     item VARCHAR(100),
+--     qtde INT,
+--     preco FLOAT,
+--     tipo VARCHAR(10),
+--     PRIMARY KEY(Id)
+-- );
+-- ALTER TABLE estoque CHANGE Id Id INT NOT NULL AUTO_INCREMENT;
+-- INSERT INTO estoque
+-- VALUES(0, "Tesoura", 200, 5.00, "Verde");
+-- INSERT INTO estoque
+-- VALUES(0, "Caderno", 300, 15.90, "Folhado");
+-- INSERT INTO estoque
+-- VALUES(0, "Lápis", 250, 1.50, "Madeira");
+-- INSERT INTO estoque
+-- VALUES(0, "Borracha", 100, 5.00, "Apagador");
+-- SELECT * FROM estoque;
+-- SELECT item, qtde, preco FROM estoque;
+-- SELECT estoque.item, estoque.qtde, estoque.preco FROM estoque;

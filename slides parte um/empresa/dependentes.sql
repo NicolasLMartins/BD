@@ -1,0 +1,24 @@
+-- Active: 1687368827307@@localhost@3306@empresa
+
+-- CREATE TABLE dependentes(
+--     Id_depen INT NOT NULL AUTO_INCREMENT,
+--     nome VARCHAR(40),
+--     sexo CHAR(1),
+--     data_nasc DATE,
+--     Id_funci INT,
+--     PRIMARY KEY(Id_depen),
+--     CONSTRAINT depende_restri
+--     FOREIGN KEY(Id_funci)
+--         REFERENCES funcionarios(Id) ON DELETE CASCADE
+-- );
+
+-- INSERT INTO dependentes
+-- VALUES(0, "Ana Malta", "f", 19980521, 135);
+-- INSERT INTO dependentes
+-- VALUES(0, "Lucas Malta", "m", 20010211, 135);
+-- INSERT INTO dependentes
+-- VALUES(0, "Ana Malta", "f", 20070304, 136);
+-- INSERT INTO dependentes
+-- VALUES(0, "Bianca Lima", "f", 20090914, 137);
+-- INSERT INTO dependentes
+-- VALUES(0, "Jonas Bastos", "m", 20081112, 138); --ERRO: Id_funci inválido

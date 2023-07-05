@@ -1,0 +1,14 @@
+-- Active: 1687368827307@@localhost@3306@empresa
+
+-- CREATE TABLE colaboradores(
+--     Id INT,
+--     nome VARCHAR(40),
+--     salario FLOAT,
+--     bonificacao FLOAT
+-- );
+-- INSERT INTO colaboradores (Id, nome, salario, bonificacao)
+-- VALUES(768, "Paula Lima", 1567.98, (1567.98 * 0.1));
+-- INSERT INTO colaboradores
+-- VALUES (768, "Paula Lima", 1567.98, (1567.98 * 0.1));
+-- INSERT INTO colaboradores (Id, nome, bonificacao, salario)
+-- VALUES (768, "Paula Lima", 1567.98, (bonificacao + 1000.00));

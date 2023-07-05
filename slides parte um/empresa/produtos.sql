@@ -1,0 +1,24 @@
+-- Active: 1687368827307@@localhost@3306@empresa
+
+-- CREATE TABLE produtos(
+--     Id INT NOT NULL AUTO_INCREMENT,
+--     item VARCHAR(40),
+--     tipo CHAR(1),
+--     preco FLOAT,
+--     PRIMARY KEY(Id)
+-- );
+-- ALTER TABLE produtos AUTO_INCREMENT = 10;
+-- INSERT INTO produtos
+-- VALUES(0, "Arroz", "G", 1.30);
+-- INSERT INTO produtos
+-- VALUES(0, "Feijão", "G", 1.20);
+-- INSERT INTO produtos
+-- VALUES(0, "Batata", "L", 1.00);
+-- INSERT INTO produtos
+-- VALUES(0, "Lentilha", "G", 1.50);
+-- INSERT INTO produtos
+-- VALUES(0, "Ovos", "C", 2.50);
+-- INSERT INTO produtos
+-- VALUES(0, "Azeite", "E", 4.50);
+-- UPDATE produtos SET preco = (preco + (preco * 0.1)) WHERE Id = 10;
+-- UPDATE produtos SET preco = (preco + (preco * 0.1)) WHERE tipo = "G";
